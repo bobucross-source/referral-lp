@@ -294,15 +294,24 @@ section { padding: 100px 0; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--primary);
-  font-size: 14px;
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary) 0%, #f07840 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 50px;
   text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255, 140, 66, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   letter-spacing: 0.02em;
-  transition: gap 0.2s ease;
 }
 .hero__btn-secondary:hover {
-  gap: 12px;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 140, 66, 0.45);
+}
+.hero__btn-secondary svg {
+  width: 18px;
+  height: 18px;
 }
 
 /* スクロールインジケーター */
@@ -757,10 +766,6 @@ footer .footer-brand {
     <li><a href="#position">募集職種</a></li>
     <li><a href="#cta">声をかける</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">
-    <span class="material-icons" style="font-size:1rem;">campaign</span>
-    紹介を始める
-  </a>
 </nav>
 
 <!-- ===== HERO ===== -->
