@@ -154,7 +154,9 @@ section { padding: 100px 0; }
 /* ===== Hero (Video Background) ===== */
 .hero {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
   min-height: 100vh;
   min-height: 100svh;
   overflow: hidden;
@@ -169,13 +171,17 @@ section { padding: 100px 0; }
   width: 100%;
   height: 100%;
   z-index: 0;
+  background: #1a1a1a;
 }
 .hero__video-bg video,
 .hero__video-bg img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 /* オーバーレイ：左側を明るく、右側は動画を見せる */
@@ -301,44 +307,6 @@ section { padding: 100px 0; }
 }
 .hero__btn-secondary:hover {
   gap: 12px;
-}
-
-/* 実績バッジ */
-.hero__stats {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  margin-top: 56px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  max-width: 480px;
-}
-.hero__stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.hero__stat-number {
-  font-family: 'Poppins', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
-  color: #1a1a1a;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-.hero__stat-number span {
-  font-size: 16px;
-  color: var(--primary);
-}
-.hero__stat-label {
-  font-size: 11px;
-  color: #888;
-  letter-spacing: 0.05em;
-}
-.hero__stat-divider {
-  width: 1px;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.1);
 }
 
 /* スクロールインジケーター */
@@ -730,8 +698,6 @@ footer .footer-brand {
   section { padding: 64px 0; }
   .hero { min-height: 100vh; min-height: 100svh; }
   .hero__content { padding: 80px 24px 100px; }
-  .hero__stats { gap: 20px; }
-  .hero__stat-number { font-size: 22px; }
   .hero__scroll { bottom: 20px; }
   .cost-layout { grid-template-columns: 1fr; }
   .cost-resolve { flex-direction: column; text-align: center; padding: 32px 24px; }
@@ -819,23 +785,6 @@ footer .footer-brand {
       </a>
     </div>
 
-    <!-- 実績数値 -->
-    <div class="hero__stats fi delay-4">
-      <div class="hero__stat-item">
-        <div class="hero__stat-number font-en">1,200<span>+</span></div>
-        <div class="hero__stat-label">導入企業数</div>
-      </div>
-      <div class="hero__stat-divider"></div>
-      <div class="hero__stat-item">
-        <div class="hero__stat-number font-en">68<span>%</span></div>
-        <div class="hero__stat-label">採用コスト削減</div>
-      </div>
-      <div class="hero__stat-divider"></div>
-      <div class="hero__stat-item">
-        <div class="hero__stat-number font-en">4.8<span>/5</span></div>
-        <div class="hero__stat-label">顧客満足度</div>
-      </div>
-    </div>
   </div>
 
   <!-- スクロールインジケーター -->
