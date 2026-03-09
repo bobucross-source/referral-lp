@@ -151,84 +151,223 @@ section { padding: 100px 0; }
 .wave { line-height: 0; }
 .wave svg { display: block; width: 100%; height: 90px; }
 
-/* ===== Hero ===== */
+/* ===== Hero (Video Background) ===== */
 .hero {
-  min-height: 100vh; display: flex; align-items: center;
-  background: linear-gradient(160deg, #FFFAF5 0%, #FFF0E0 40%, #FFE8D0 100%);
-  position: relative; overflow: hidden; padding-top: 80px;
-}
-.hero-blob {
-  position: absolute; border-radius: 50%;
-  filter: blur(100px); opacity: 0.25;
-  animation: float 8s ease-in-out infinite;
-}
-.hero-blob-1 { width: 500px; height: 500px; background: var(--primary-light); top: -100px; right: -100px; }
-.hero-blob-2 { width: 400px; height: 400px; background: #FFD699; bottom: -80px; left: -80px; animation-delay: -3s; }
-.hero-blob-3 { width: 300px; height: 300px; background: #FF9F6B; top: 40%; left: 60%; animation-delay: -5s; }
-@keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
-}
-.hero-inner {
-  max-width: 1100px; margin: 0 auto; padding: 0 24px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center;
-  position: relative; z-index: 1;
-}
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,140,66,0.12); color: var(--primary-dark);
-  padding: 8px 18px; border-radius: 50px;
-  font-size: 0.85rem; font-weight: 600; margin-bottom: 24px;
-}
-.hero h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 900; line-height: 1.3; margin-bottom: 20px;
-  word-break: keep-all; overflow-wrap: anywhere;
-}
-.hero h1 .quote-mark { color: var(--primary); font-size: 1.1em; }
-.hero-sub {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: var(--text-muted); line-height: 1.7;
-  margin-bottom: 36px; font-weight: 500;
-}
-.hero-sub strong { color: var(--text); font-weight: 700; }
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 18px 40px; border-radius: 50px;
-  background: var(--primary); color: #fff;
-  font-size: 1.05rem; font-weight: 700; text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 6px 30px rgba(255,140,66,0.35);
-}
-.hero-cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 40px rgba(255,140,66,0.45);
-}
-.hero-visual { display: flex; flex-direction: column; align-items: center; gap: 24px; }
-.hero-img-area {
-  width: 100%; max-width: 440px; aspect-ratio: 4/3;
-  border-radius: var(--radius-lg);
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
-  background: linear-gradient(135deg, #FFE0C2, #FFD0A0);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+}
+
+/* 動画背景 */
+.hero__video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.hero__video-bg video,
+.hero__video-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* オーバーレイ：左側を明るく、右側は動画を見せる */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.58) 35%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+/* コンテンツ */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+
+.hero__label {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(255, 140, 66, 0.1);
+  border: 1px solid rgba(255, 140, 66, 0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+}
+
+.hero__title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.hero__title .highlight {
+  color: var(--primary);
   position: relative;
 }
-.hero-img-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hero-img-area .placeholder-icon { font-size: 64px; color: rgba(255,140,66,0.3); }
-.hero-stats { display: flex; gap: 16px; width: 100%; max-width: 440px; }
-.hero-stat {
-  flex: 1; background: var(--white); border-radius: var(--radius);
-  padding: 20px 16px; text-align: center;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+.hero__title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  border-radius: 2px;
 }
-.hero-stat-num {
+
+.hero__subtitle {
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.hero__description {
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: #555;
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 40px;
+}
+
+/* CTAボタン */
+.hero__cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary) 0%, #f07840 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255, 140, 66, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.02em;
+}
+.hero__btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 140, 66, 0.45);
+}
+.hero__btn-primary svg {
+  width: 18px;
+  height: 18px;
+}
+.hero__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: gap 0.2s ease;
+}
+.hero__btn-secondary:hover {
+  gap: 12px;
+}
+
+/* 実績バッジ */
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  max-width: 480px;
+}
+.hero__stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero__stat-number {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem; font-weight: 900; color: var(--primary);
-  line-height: 1; margin-bottom: 6px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
-.hero-stat-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 500; }
+.hero__stat-number span {
+  font-size: 16px;
+  color: var(--primary);
+}
+.hero__stat-label {
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+.hero__stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* スクロールインジケーター */
+.hero__scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  animation: scrollAnim 1.8s ease-in-out infinite;
+}
+@keyframes scrollAnim {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
 
 /* ===== Section: Cost ===== */
 .sec-cost { background: var(--white); }
@@ -589,11 +728,11 @@ footer .footer-brand {
   .nav-links { display: none; }
   .nav-cta { padding: 8px 18px; font-size: 0.8rem; }
   section { padding: 64px 0; }
-  .hero { padding-top: 100px; min-height: auto; padding-bottom: 60px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .hero-eyebrow { justify-content: center; }
-  .hero-visual { align-items: center; }
-  .hero-stats { max-width: 320px; }
+  .hero { min-height: 100vh; min-height: 100svh; }
+  .hero__content { padding: 80px 24px 100px; }
+  .hero__stats { gap: 20px; }
+  .hero__stat-number { font-size: 22px; }
+  .hero__scroll { bottom: 20px; }
   .cost-layout { grid-template-columns: 1fr; }
   .cost-resolve { flex-direction: column; text-align: center; padding: 32px 24px; }
   .midterm-layout { grid-template-columns: 1fr; }
@@ -635,50 +774,78 @@ footer .footer-brand {
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
-  <div class="hero-blob hero-blob-1"></div>
-  <div class="hero-blob hero-blob-2"></div>
-  <div class="hero-blob hero-blob-3"></div>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-eyebrow fi">
-        <span class="material-icons" style="font-size:1rem;">handshake</span>
-        <span class="font-en">Referral Recruiting</span>
-      </div>
-      <h1 class="fi delay-1"><span class="quote-mark">"</span>うちの会社いいよ!<span class="quote-mark">"</span><br>その一言が、会社の未来をつくる。</h1>
-      <p class="hero-sub fi delay-2"><strong>時間がかかるからこそ、今から始める。</strong><br>気軽な声かけ戦略。</p>
-      <a href="#cta" class="hero-cta fi delay-3">
-        <span class="material-icons">arrow_downward</span>
-        詳しく見る
+
+  <!-- 動画背景 -->
+  <div class="hero__video-bg">
+    <video autoplay muted loop playsinline poster="images/bg_firstview.png">
+      <source src="images/bg_loop.mp4" type="video/mp4" />
+      <!-- フォールバック: 静止画 -->
+      <img src="images/bg_firstview.png" alt="背景" />
+    </video>
+  </div>
+
+  <!-- オーバーレイ -->
+  <div class="hero__overlay"></div>
+
+  <!-- コンテンツ -->
+  <div class="hero__content">
+    <span class="hero__label fi">Referral Recruiting Platform</span>
+
+    <h1 class="hero__title fi delay-1">
+      うちの会社<span class="highlight">いいよ！</span><br />
+      その一言が、<br />
+      会社の未来をつくる
+    </h1>
+
+    <p class="hero__subtitle fi delay-2">社員の紹介が、最強の採用チャネルになる。</p>
+
+    <p class="hero__description fi delay-2">
+      リファラル採用を仕組み化し、採用コストを削減しながら<br />
+      カルチャーフィットした人材を獲得するプラットフォームです。
+    </p>
+
+    <div class="hero__cta fi delay-3">
+      <a href="#cta" class="hero__btn-primary">
+        無料で始める
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12M12 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#cost" class="hero__btn-secondary">
+        サービス資料を見る
+        <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
+          <path d="M4 10h12M12 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img-area fi delay-2">
-        <img src="images/hero_photo.png" alt="リファラル採用イメージ" loading="lazy">
+
+    <!-- 実績数値 -->
+    <div class="hero__stats fi delay-4">
+      <div class="hero__stat-item">
+        <div class="hero__stat-number font-en">1,200<span>+</span></div>
+        <div class="hero__stat-label">導入企業数</div>
       </div>
-      <div class="hero-stats fi delay-3">
-        <div class="hero-stat">
-          <div class="hero-stat-num">0</div>
-          <div class="hero-stat-label">紹介手数料</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num" style="color: var(--accent);">Low</div>
-          <div class="hero-stat-label">離職リスク</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num" style="color: #4CAF50;">High</div>
-          <div class="hero-stat-label">カルチャーマッチ</div>
-        </div>
+      <div class="hero__stat-divider"></div>
+      <div class="hero__stat-item">
+        <div class="hero__stat-number font-en">68<span>%</span></div>
+        <div class="hero__stat-label">採用コスト削減</div>
+      </div>
+      <div class="hero__stat-divider"></div>
+      <div class="hero__stat-item">
+        <div class="hero__stat-number font-en">4.8<span>/5</span></div>
+        <div class="hero__stat-label">顧客満足度</div>
       </div>
     </div>
   </div>
+
+  <!-- スクロールインジケーター -->
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    <span class="font-en">Scroll</span>
+  </div>
+
 </section>
 
-<!-- Wave: warm → white -->
-<div class="wave" style="background: var(--white);">
-  <svg viewBox="0 0 1440 90" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,45 C180,90 360,5 540,45 C720,85 900,10 1080,45 C1200,68 1360,28 1440,42 L1440,90 L0,90 Z" fill="#FFFFFF"/>
-  </svg>
-</div>
 
 <!-- ===== SECTION: COST ===== -->
 <section class="sec-cost" id="cost">
