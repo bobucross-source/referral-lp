@@ -672,6 +672,35 @@ section { padding: 100px 0; }
 }
 .cta-note { margin-top: 20px; font-size: 0.85rem; color: var(--text-muted); }
 
+/* ===== Message (YouTube) ===== */
+.sec-message {
+  background: linear-gradient(180deg, #FAF5FF 0%, #F5F0FA 100%);
+  padding: 100px 0;
+}
+.sec-message .section-inner { text-align: center; }
+.message-video {
+  margin-top: 48px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(105,59,159,0.15);
+}
+.message-video .video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.message-video .video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* ===== Footer ===== */
 footer {
   background: #F5F0FA; color: var(--text-muted);
@@ -768,13 +797,13 @@ footer .footer-brand {
 
     <div class="hero__cta fi delay-3">
       <a href="#cta" class="hero__btn-primary">
-        無料で始める
+        紹介を始める
         <svg viewBox="0 0 20 20" fill="none">
           <path d="M4 10h12M12 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <a href="#cost" class="hero__btn-secondary">
-        サービス資料を見る
+      <a href="#message" class="hero__btn-secondary">
+        コミュニティ事業部のメッセージを見る
         <svg viewBox="0 0 20 20" fill="none" width="16" height="16">
           <path d="M4 10h12M12 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -1069,6 +1098,20 @@ footer .footer-brand {
       リファラル紹介フォームへ
     </a>
     <p class="cta-note fi delay-3">まずはカジュアル面談からスタートできます。詳しくは人事チームまでお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION: MESSAGE (YouTube) ===== -->
+<section class="sec-message" id="message">
+  <div class="section-inner">
+    <p class="section-eyebrow fi font-en" style="color: var(--shift-purple);">Message</p>
+    <h2 class="section-title fi delay-1">コミュニティ事業部からの<span class="accent-shift">メッセージ</span></h2>
+    <p class="section-lead fi delay-2" style="margin: 0 auto;">リファラル採用に込めた想いを、コミュニティ事業部の責任者がお伝えします。</p>
+    <div class="message-video fi delay-3">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/aPngC1f7MDo" title="コミュニティ事業部からのメッセージ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
   </div>
 </section>
 
