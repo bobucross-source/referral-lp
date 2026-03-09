@@ -39,7 +39,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: 'Noto Sans JP', sans-serif;
   color: var(--text);
@@ -155,8 +155,6 @@ section { padding: 100px 0; }
 .hero {
   position: relative;
   width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
   min-height: 100vh;
   min-height: 100svh;
   overflow: hidden;
@@ -167,21 +165,19 @@ section { padding: 100px 0; }
 /* 動画背景 */
 .hero__video-bg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: -1px;
+  right: -1px;
+  bottom: 0;
   z-index: 0;
-  background: #1a1a1a;
 }
 .hero__video-bg video,
 .hero__video-bg img {
   display: block;
-  width: 100%;
+  width: calc(100% + 2px);
   height: 100%;
   object-fit: cover;
   object-position: center;
-  min-width: 100%;
-  min-height: 100%;
 }
 
 /* オーバーレイ：左側を明るく、右側は動画を見せる */
